@@ -14,6 +14,8 @@ import com.example.soapCrud.Entity.Student;
 import com.example.soapCrud.dao.StudentRepository;
 import com.example.soapCrud.schema.AddStudentRequest;
 import com.example.soapCrud.schema.AddStudentResponse;
+import com.example.soapCrud.schema.DeleteStudentRequest;
+import com.example.soapCrud.schema.DeleteStudentResponse;
 import com.example.soapCrud.schema.GetAllStudentsResponse;
 import com.example.soapCrud.schema.GetStudentRequest;
 import com.example.soapCrud.schema.GetStudentResponse;
@@ -111,4 +113,23 @@ public class StudentEndpoint {
 		response.setServiceStatus(serviceStatus);
 		return response;
 		}
+	
+	@PayloadRoot(namespace = "http://www.example.org/Student", localPart = "deleteStudentRequest")
+	@ResponsePayload
+	public DeleteStudentResponse deleteStudent(@RequestPayload DeleteStudentRequest request) {
+		Student student = studentService.getStudentById(request.getStudentId());
+		ServiceStatus serviceStatus = new ServiceStatus();
+		if (student == null) {
+			serviceStatus.setStatusCode("FAIL");
+			serviceStatus.setMessage("Content Not Available");
+		} else {
+			studentService.deleteStudent(student);
+			serviceStatus.setStatusCode("SUCCESS");
+			serviceStatus.setMessage("Content Deleted Successufully");
+		}
+		
+		DeleteStudentResponse response = new DeleteStudentResponse();
+		response.setServiceStatus(serviceStatus);
+		return response;
+	}
 }

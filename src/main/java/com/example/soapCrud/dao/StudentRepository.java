@@ -12,5 +12,5 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
 	
 	Student findStudentById(Integer studentId);
-	List<Student> findStudentByFnameOrLnameOrAge(String fname, String lname, Integer age);
+	List<Student> findStudentByFnameOrLname(String fname, String lname);
 }
