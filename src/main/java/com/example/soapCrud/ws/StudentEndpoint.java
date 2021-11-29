@@ -4,14 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.example.soapCrud.Entity.Student;
-import com.example.soapCrud.dao.StudentRepository;
 import com.example.soapCrud.schema.AddStudentRequest;
 import com.example.soapCrud.schema.AddStudentResponse;
 import com.example.soapCrud.schema.DeleteStudentRequest;
@@ -27,9 +25,6 @@ import com.example.soapCrud.service.impl.StudentServiceImpl;
 
 @Endpoint
 public class StudentEndpoint {
-	
-	@Autowired
-	private StudentRepository studentRepository;
 	
 	@Autowired
 	private StudentServiceImpl studentService;

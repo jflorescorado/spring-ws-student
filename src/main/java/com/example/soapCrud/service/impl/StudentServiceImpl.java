@@ -31,7 +31,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public boolean addStudent(Student student) {
-		List<Student> checkStudentExists = studentRepository.findStudentByFnameOrLnameOrAge(student.getFname(),
+		List<Student> checkStudentExists = studentRepository.findStudentByFnameOrLname(student.getFname(),
 				student.getLname());
 		if (checkStudentExists.size() > 0) {
 			return false;
