@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -17,8 +18,9 @@ import com.example.soapCrud.schema.GetAllStudentsResponse;
 import com.example.soapCrud.schema.GetStudentRequest;
 import com.example.soapCrud.schema.GetStudentResponse;
 import com.example.soapCrud.schema.ServiceStatus;
-import com.example.soapCrud.schema.StudentDetails;
 import com.example.soapCrud.schema.StudentInfo;
+import com.example.soapCrud.schema.UpdateStudentRequest;
+import com.example.soapCrud.schema.UpdateStudentResponse;
 import com.example.soapCrud.service.impl.StudentServiceImpl;
 
 @Endpoint
@@ -95,4 +97,18 @@ public class StudentEndpoint {
 		}
 		return response;
 	}
+	
+	@PayloadRoot(namespace = "http://www.example.org/Student", localPart = "updateStudentRequest")
+	@ResponsePayload
+	public UpdateStudentResponse updateStudent(@RequestPayload UpdateStudentRequest request) {
+		Student student = new Student();
+		BeanUtils.copyProperties(request.getStudentInfo(), student);
+		studentService.updateStudent(student);
+		ServiceStatus serviceStatus = new ServiceStatus();
+		serviceStatus.setMessage("SUCCESS");
+		serviceStatus.setMessage("Content Update Successfully");
+		UpdateStudentResponse response = new UpdateStudentResponse();
+		response.setServiceStatus(serviceStatus);
+		return response;
+		}
 }
