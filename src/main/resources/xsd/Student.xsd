@@ -15,7 +15,7 @@ elementFormDefault="qualified">
             <xs:sequence>
                 <xs:element name="fname" type="xs:string"/>
                 <xs:element name="lname" type="xs:string" />
-                <xs:element name="age" type="xs:integer" />
+                <xs:element name="age" type="xs:int" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -30,18 +30,10 @@ elementFormDefault="qualified">
     <xs:element name="GetStudentResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="studentInfos" type="tns:StudentDetails" />
+                <xs:element name="studentInfos" type="tns:studentInfo" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:complexType name="StudentDetails">
-        <xs:sequence>
-            <xs:element name="id" type="xs:integer"/>
-            <xs:element name="fname" type="xs:string"/>
-            <xs:element name="lname" type="xs:string"/>
-            <xs:element name="age" type="xs:integer" />
-        </xs:sequence>
-    </xs:complexType>
     <xs:complexType name="serviceStatus">
         <xs:sequence>
             <xs:element name="statusCode" type="xs:string"/>
@@ -50,10 +42,10 @@ elementFormDefault="qualified">
     </xs:complexType>
     <xs:complexType name="studentInfo">
         <xs:sequence>
-            <xs:element name="studentId" type="xs:integer"/>
+            <xs:element name="studentId" type="xs:int"/>
             <xs:element name="fname" type="xs:string"/>
             <xs:element name="lname" type="xs:string"/>
-            <xs:element name="age" type="xs:integer" />
+            <xs:element name="age" type="xs:int" />
         </xs:sequence>
     </xs:complexType>
     <xs:element name="updateStudentRequest">
@@ -73,7 +65,7 @@ elementFormDefault="qualified">
     <xs:element name="deleteStudentRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="studentId" type="xs:integer"/>
+                <xs:element name="studentId" type="xs:int"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
