@@ -30,8 +30,7 @@ elementFormDefault="qualified">
     <xs:element name="GetStudentResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="studentDetails" 
-                type="tns:StudentDetails" maxOccurs="unbounded"/>
+                <xs:element name="studentInfos" type="tns:StudentDetails" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -91,8 +90,7 @@ elementFormDefault="qualified">
     <xs:element name="GetAllStudentsResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="studentInfo" 
-                type="tns:studentInfo" maxOccurs="unbounded"/>
+                <xs:element name="studentInfo" type="tns:studentInfo" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
