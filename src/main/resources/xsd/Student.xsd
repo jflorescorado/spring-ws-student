@@ -3,10 +3,10 @@
 targetNamespace="http://www.example.org/Student" xmlns:tns="http://www.example.org/Student" 
 elementFormDefault="qualified">
 
-<xs:element name="GetStudentRequest">
+ <xs:element name="GetStudentRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="id" type="xs:integer" />
+                <xs:element name="id" type="xs:int" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -30,7 +30,7 @@ elementFormDefault="qualified">
     <xs:element name="GetStudentResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="studentInfos" 
+                <xs:element name="studentDetails" 
                 type="tns:StudentDetails" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
@@ -91,7 +91,8 @@ elementFormDefault="qualified">
     <xs:element name="GetAllStudentsResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="studentInfo" type="tns:studentInfo" maxOccurs="unbounded"/>
+                <xs:element name="studentInfo" 
+                type="tns:studentInfo" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
